@@ -100,3 +100,87 @@ class MainPage:
 
         self.checkbox_frame = tk.Frame(self.root, bg="#e3f2fd")
         self.checkbox_frame.pack(pady=5)
+
+        for student in students_in_group:
+            var = tk.IntVar()
+            self.attendance_vars[student] = var
+            checkbox = tk.Checkbutton(self.checkbox_frame, text=student, font=("Arial", 12), variable=var, bg="#e3f2fd",
+                                      fg="#01579b")
+            checkbox.pack(anchor="w", pady=2)
+
+
+        self.submit_button = tk.Button(self.root, text="Submit Attendance", font=("Arial", 12), bg="#2196f3",
+                                       fg="#ffffff",
+                                       command=lambda: self.submit_attendance(selected_module, selected_group))
+        self.submit_button.pack(pady=20)
+
+
+        self.view_button = tk.Button(self.root, text="View Attendance", font=("Arial", 12), bg="#2196f3", fg="#ffffff",
+                                     command=lambda: self.view_attendance(selected_module, selected_group))
+        self.view_button.pack(pady=10)
+
+    def submit_attendance(self, selected_module, selected_group):
+
+        attended_students = [student for student, var in self.attendance_vars.items() if var.get() == 1]
+        not_attended_students = [student for student, var in self.attendance_vars.items() if var.get() == 0]
+
+
+        current_date = datetime.now().strftime("%A, %B %d, %Y")
+
+
+        if current_date not in self.attendance_records[selected_module][selected_group]:
+            self.attendance_records[selected_module][selected_group][current_date] = {"attended": [],
+                                                                                      "not_attended": []}
+
+
+        self.attendance_records[selected_module][selected_group][current_date]["attended"] = attended_students
+        self.attendance_records[selected_module][selected_group][current_date]["not_attended"] = not_attended_students
+
+
+        self.save_attendance_data()
+
+        messagebox.showinfo("Attendance Submitted",
+                            f"Attendance for {selected_group} in {selected_module} submitted successfully.")
+
+    def view_attendance(self, selected_module, selected_group):
+
+        attendance_data = self.attendance_records[selected_module][selected_group]
+
+
+        view_window = tk.Toplevel(self.root)
+        view_window.title(f"Attendance History - {selected_module} - {selected_group}")
+        view_window.geometry("900x900")
+
+
+        history_label = tk.Label(view_window, text="Attendance History", font=("Arial", 14, "bold"), bg="#2196f3",
+                                 fg="#ffffff")
+        history_label.pack(pady=10, fill="x")
+
+
+        for date, record in sorted(attendance_data.items(), reverse=True):
+            date_label = tk.Label(view_window, text=f"Date: {date}", font=("Arial", 12, "bold"), bg="#ffffff",
+                                  fg="#01579b")
+            date_label.pack(pady=5)
+
+            attended_label = tk.Label(view_window, text="Attended Students", font=("Arial", 12), bg="#ffffff",
+                                      fg="#01579b")
+            attended_label.pack(pady=5)
+            attended_students = "\n".join(record["attended"]) if record["attended"] else "None"
+            attended_list = tk.Label(view_window, text=attended_students, font=("Arial", 12), bg="#ffffff",
+                                     fg="#01579b")
+            attended_list.pack(pady=5)
+
+            not_attended_label = tk.Label(view_window, text="Not Attended Students", font=("Arial", 12), bg="#ffffff",
+                                          fg="#01579b")
+            not_attended_label.pack(pady=5)
+            not_attended_students = "\n".join(record["not_attended"]) if record["not_attended"] else "None"
+            not_attended_list = tk.Label(view_window, text=not_attended_students, font=("Arial", 12), bg="#ffffff",
+                                         fg="#01579b")
+            not_attended_list.pack(pady=5)
+
+
+        close_button = tk.Button(view_window, text="Close", font=("Arial", 12), bg="#f44336", fg="#ffffff",
+                                 command=view_window.destroy)
+        close_button.pack(pady=20)
+
+    def save_attendance_data(self):
