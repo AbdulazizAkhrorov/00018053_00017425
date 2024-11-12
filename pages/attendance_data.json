@@ -1,1 +1,121 @@
-{}
+{
+    "Computer Science": {
+        "Group 2": {
+            "Tuesday, November 12, 2024": {
+                "attended": [
+                    "Eve Moore",
+                    "Maggie Moore",
+                    "Maggie Wilson"
+                ],
+                "not_attended": [
+                    "Quincy Gonzalez",
+                    "Nancy Jones",
+                    "David Gonzalez",
+                    "Charlie Wilson",
+                    "Kenny Miller",
+                    "Hannah Davis",
+                    "Sophie Lopez",
+                    "Rachel Smith",
+                    "Quincy Davis",
+                    "David Martin",
+                    "Bob Martinez",
+                    "Laura Davis"
+                ]
+            }
+        },
+        "Group 1": {
+            "Tuesday, November 12, 2024": {
+                "attended": [
+                    "Rachel Moore",
+                    "Tom Jackson",
+                    "Eve Jones"
+                ],
+                "not_attended": [
+                    "Grace Wilson",
+                    "Maggie Jones",
+                    "Paul Brown",
+                    "Hannah Hernandez",
+                    "Ivy Martin",
+                    "Laura Smith",
+                    "Grace Moore",
+                    "Nancy Jackson",
+                    "Laura Hernandez",
+                    "Ivy Martinez",
+                    "Bob Gonzalez",
+                    "Kenny Moore"
+                ]
+            }
+        },
+        "Group 3": {
+            "Tuesday, November 12, 2024": {
+                "attended": [
+                    "Jack Jones",
+                    "Charlie Jones",
+                    "Paul Taylor"
+                ],
+                "not_attended": [
+                    "Tom Hernandez",
+                    "Ivy Hernandez",
+                    "Laura Thomas",
+                    "Laura Jackson",
+                    "Quincy Johnson",
+                    "Maggie Miller",
+                    "Frank Davis",
+                    "Hannah Johnson",
+                    "Rachel Jones",
+                    "Sophie Smith",
+                    "David Garc\u00eda",
+                    "Frank Williams"
+                ]
+            }
+        }
+    },
+    "IMOB": {
+        "Group 1": {
+            "Tuesday, November 12, 2024": {
+                "attended": [
+                    "David Johnson"
+                ],
+                "not_attended": [
+                    "Rachel Williams",
+                    "Charlie Wilson",
+                    "Sophie Brown",
+                    "Jack Jones",
+                    "Alice Thomas",
+                    "Jack Lopez",
+                    "Paul Anderson",
+                    "Kenny Miller",
+                    "Rachel Hernandez",
+                    "Quincy Johnson",
+                    "Kenny Martinez",
+                    "Hannah Jackson",
+                    "Paul Taylor",
+                    "Nancy Wilson"
+                ]
+            }
+        },
+        "Group 2": {
+            "Tuesday, November 12, 2024": {
+                "attended": [
+                    "Tom Thomas",
+                    "Tom Jackson",
+                    "Grace Hernandez"
+                ],
+                "not_attended": [
+                    "Alice Brown",
+                    "Alice Martinez",
+                    "Kenny Smith",
+                    "Laura Garc\u00eda",
+                    "Rachel Moore",
+                    "Alice Johnson",
+                    "Sophie Moore",
+                    "David Davis",
+                    "Sophie Jones",
+                    "David Martin",
+                    "Charlie Jones",
+                    "Jack Jones"
+                ]
+            }
+        }
+    }
+}
