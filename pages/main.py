@@ -6,7 +6,7 @@ from datetime import datetime
 from login import LoginPage
 
 class AttendanceManager:
-
+    # Attendance records steps.
     def __init__(self):
         self.attendance_records = {"CS": {}, "IMOB": {}, "WT": {}}
         self.load_attendance_data()
@@ -41,7 +41,7 @@ class AttendanceManager:
         self.attendance_records[module][group][date]["not_attended"] = not_attended_students
         self.save_attendance_data()
 
-
+# Used to get random student's names
 class StudentGenerator:
 
     @staticmethod
@@ -55,9 +55,9 @@ class StudentGenerator:
         return [f"{first_names[randint(0, len(first_names) - 1)]} {last_names[randint(0, len(last_names) - 1)]}"
                 for _ in range(n)]
 
-
+ # Mostly used for the attendance system interacting with the attendance manager and generating the GUI.
 class AttendanceApp:
-
+ # Start the primary attendance app with data and graphical elements.
     def __init__(self, root):
         self.root = root
         self.root.title("Attendance System")
@@ -76,7 +76,7 @@ class AttendanceApp:
         self.setup_ui()
 
     def setup_ui(self):
-
+ # Configure the first UI components—dropdowns and buttons—here.
         for widget in self.root.winfo_children():
             widget.destroy()
 
@@ -92,7 +92,7 @@ class AttendanceApp:
         self.select_module_button.pack(pady=10)
 
     def show_group_window(self):
-
+      #  Show the group choosing window following module choice.
         selected_module = self.module_var.get()
         self.attendance_manager.attendance_records.setdefault(selected_module, {})
 
@@ -116,6 +116,8 @@ class AttendanceApp:
         selected_group = self.group_var.get()
         self.show_attendance_check_window_for_group(selected_module, selected_group)
 
+
+  # For attendance marking, set checkboxes for every student in the chosen category.
     def show_attendance_check_window_for_group(self, selected_module, selected_group):
 
         for widget in self.root.winfo_children():
@@ -142,6 +144,8 @@ class AttendanceApp:
         self.view_button = tk.Button(self.root, text="View Attendance", font=("Arial", 12), bg="#2196f3", fg="#ffffff", command=lambda: self.view_attendance(selected_module, selected_group))
         self.view_button.pack(pady=10)
 
+
+  #Send the attendance for the chosen module and group.
     def submit_attendance(self, selected_module, selected_group):
 
         attended_students = [student for student, var in self.attendance_vars.items() if var.get() == 1]
@@ -216,3 +220,4 @@ if __name__ == "__main__":
     root = tk.Tk()
     login_page = LoginPage(root, on_login_success=on_login_success)
     root.mainloop()
+
