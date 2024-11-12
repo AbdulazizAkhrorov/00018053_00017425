@@ -10,12 +10,14 @@ class LoginPage:
         self.root.geometry("400x600")
         self.root.config(bg="#e3f2fd")
 
+        # User name input field code
         self.username_label = tk.Label(self.root, text="Enter Username:", font=("Arial", 12), bg="#e3f2fd", fg="#01579b")
         self.username_label.pack(pady=20)
 
         self.username_entry = tk.Entry(self.root, font=("Arial", 12), bg="#ffffff", fg="#01579b", relief="solid")
         self.username_entry.pack(pady=5)
 
+        # Next button log
         self.username_button = tk.Button(self.root, text="Next", font=("Arial", 12), bg="#2196f3", fg="#ffffff", command=self.check_username)
         self.username_button.pack(pady=10)
 
