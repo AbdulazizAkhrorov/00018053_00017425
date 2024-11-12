@@ -3,6 +3,7 @@ from tkinter import messagebox
 
 class LoginPage:
     def __init__(self, root, on_login_success):
+        """Initialize login page with the title and resolution"""
         self.root = root
         self.on_login_success = on_login_success
         self.root.title("Login System")
